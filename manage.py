@@ -7,7 +7,7 @@ from flask_session import Session
 from models import db
 
 # 1. 创建App对象
-from views import admin_blu, index_blu, job_blu, company_blu
+from views import admin_blu, index_blu, job_blu, company_blu, user_blu
 
 app = Flask (__name__)
 
@@ -16,6 +16,7 @@ app.register_blueprint(admin_blu, url_prefix="/admin")
 app.register_blueprint (index_blu)
 app.register_blueprint(job_blu, url_prefix='/job')
 app.register_blueprint(company_blu, url_prefix='/company')
+app.register_blueprint(user_blu, url_prefix='/user')
 
 
 

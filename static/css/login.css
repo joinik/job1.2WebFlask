@@ -8,6 +8,10 @@
   background-color: #00b38a;
 }
 
+.login_sub {
+  color: black;
+}
+
 .loginBox {
   width: 702px;
   height: 493px;
@@ -229,7 +233,7 @@
   color: #00b38a;
 }
 
-.loginBox .aboutLogin .loginInfo .leftText ul li:last-of-type button {
+.loginBox .aboutLogin .loginInfo .leftText ul li:last-of-type button{
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   width: 290px;

@@ -33,15 +33,19 @@ class UserBase (Base, UserMixin):
 	ROLE_COMPANY = 20
 	ROLE_ADMIN = 30
 
-	email = db.Column (db.String (64), unique=True, nullable=False)
-	# phone = db.Column(db.Integer, unique=True, index=True, nullable=False)
+	email = db.Column (db.String (64), unique=True, nullable=True)
+	phone = db.Column(db.String (11), unique=True, index=True, nullable=False)
 	_password = db.Column ('password', db.String (128), nullable=False)
 	is_enable = db.Column (db.Boolean, default=True, index=True)
 
+
+
+	# @property主要是让password字段无法直接读取
 	@property
 	def password(self):
 		return self._password
 
+	# @password.setter修改用户的password字段 (修改密码)
 	@password.setter
 	def password(self, orig_password):
 		self._password = generate_password_hash (orig_password)
@@ -63,7 +67,7 @@ class User (UserBase):
 	__tablename__ = 'user'
 
 	id = db.Column (db.BigInteger, primary_key=True)
-	name = db.Column (db.String (8), nullable=False)
+	name = db.Column (db.String (50), nullable=False)
 	resume = db.Column (db.String (128))
 	role = db.Column (db.SmallInteger, default=UserBase.ROLE_USER)
 
@@ -78,7 +82,7 @@ class Company (UserBase):
 	__tablename__ = 'company'
 
 	id = db.Column (db.Integer, primary_key=True)
-	name = db.Column (db.String (32), unique=True, nullable=False)
+	name = db.Column (db.String (50), unique=True, nullable=False)
 	website = db.Column (db.String (256))
 	address = db.Column (db.String (64))
 	logo = db.Column (db.String (128), default=DEFAULT_LOGO)
@@ -100,7 +104,7 @@ class Job (Base):
 	__tablename__ = 'job'
 
 	id = db.Column (db.Integer, primary_key=True)
-	name = db.Column (db.String (64), nullable=False)
+	name = db.Column (db.String (69), nullable=False)
 	salary_min = db.Column (db.SmallInteger, nullable=False, index=True)
 	salary_max = db.Column (db.SmallInteger, nullable=False, index=True)
 	company_id = db.Column (db.Integer, db.ForeignKey ('company.id', ondelete='CASCADE'))

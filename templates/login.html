@@ -16,10 +16,10 @@
   <!-- 让网站加入QQ登录接口,可以让用户用qq账号登录，content是向腾讯申请接口拿到的代码 -->
   <meta property="qc:admins" content="23635710066417756375">
   <title>互联网求职招聘找工作-上拉勾招聘-专业的互联网求职招聘网站</title>
-  <link rel="stylesheet" type="text/css" href="css/common.css">
-  <link rel="stylesheet" ype="text/css" href="css/login.css">
-  <link rel="stylesheet" ype="text/css" href="css/iconfont.css">
-  <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" type="text/css" href="/static/css/common.css">
+  <link rel="stylesheet" ype="text/css" href="/static/css/login.css">
+  <link rel="stylesheet" ype="text/css" href="/static/css/iconfont.css">
+  <link rel="shortcut icon" href="/static/images/favicon.ico" type="image/x-icon">
 </head>
 
 
@@ -50,7 +50,7 @@
     <div class="topBox container-fluid"></div>
     <div class="loginBox">
       <section class="imgBox">
-        <a href="index.html"><img src="images/LAGOU.png" alt="LAGOU.COM"></a>
+        <a href="index.html"><img src="/static/images/LAGOU.png" alt="LAGOU.COM"></a>
       </section>
       <div class="aboutLogin">
         <div class="qrcode">
@@ -68,27 +68,27 @@
               </li>
               <li class="borderBottom">
                 <div class="passlogin">
-                  <input type="text" name="username" onblur="userOnblur()" onfocus="userOnfocus()"
+                  <input type="text" id="mobile" name="username" onblur="userOnblur()" onfocus="userOnfocus()"
                     placeholder="请输入常用手机号/邮箱">
                   <div class="usernull"><span class="exclamation">!</span><span>请输入已验证手机/邮箱</span></div>
                 </div>
                 <div class="codelogin">
                   <div class="phoneNum clear">
                     <div class="startNum lf">0086&nbsp;&nbsp;&nbsp;&or;</div>
-                    <input class="lf" type="text" placeholder="请输入常用手机号码">
+                    <input name="username" class="lf" type="text" placeholder="请输入常用手机号码">
                   </div>
                 </div>
               </li>
               <li class="borderBottom">
                 <div class="passlogin">
-                  <input type="password" name="password" onblur="passOnblur()" onfocus="passOnfocus()"
+                  <input type="password" id="password" name="password" onblur="passOnblur()" onfocus="passOnfocus()"
                     placeholder="请输入密码">
                   <div class="passnull"><span class="exclamation">!</span><span>请输入密码</span></div>
                 </div>
                 <div class="codelogin">
                   <div class="phoneCode">
-                    <input type="text" placeholder="请输入手机验证码">
-                    <a class="getCode" href="#">获取验证码</a>
+                    <input type="text" id="smscode" name="password" placeholder="请输入手机验证码">
+                    <a class="get_code" href="javascript:;" onclick="sendSMSCode()">获取验证码</a>
                   </div>
                 </div>
               </li>
@@ -96,7 +96,10 @@
                 <a href="#" class="rf">忘记密码?</a>
               </li>
               <li>
-                <button>登&nbsp;录</button>
+<!--                <button class="login_sub" onclick="login_sub()">登&nbsp;录</button>-->
+                <button >
+                  <a class="login_sub" href="javascript:;" onclick="loginSub()">登&nbsp;录</a>
+                </button>
               </li>
             </ul>
             <span class="textOr">or</span>
@@ -109,7 +112,7 @@
           <section class="rightBox rf">
             <div class="register">
               <h5>还没有账号：</h5>
-              <a href="into.html" target="_blank">立即注册</a>
+              <a href="{{ url_for('user_blu.register') }}" >立即注册</a>
             </div>
             <div class="loginWay">
               <h5>使用以下账号直接登录:</h5>
@@ -236,7 +239,9 @@
       }
     }
   </script>
-  <script src="js/index.js"></script>
+  <script src="/static/js/jquery-3.4.0.js"></script>
+  <script src="/static/js/main.js"></script>
+  <script src="/static/js/index.js"></script>
 </body>
 
 </html>
